@@ -1,22 +1,34 @@
 const request = require("request");
-const express = require("express");
-const cheerio = require("cheerio");
+const app = require("express")();
+var cors = require("cors");
+const bodyParser = require("body-parser");
+const getUrls = require("get-urls");
 
 const getTitle = require("./data/title");
 const getImg = require("./data/img");
 const getDesc = require("./data/desc");
 
-const app = express();
-const port = 3000;
-const url = "https://andrejgajdos.com/how-to-create-a-link-preview/";
+app.use(cors());
+app.use(bodyParser.json());
+
+const port = 3001;
 
 app.get("/", (req, res) => {
-  res.send("Çalışıyor çalışmakta olan");
+  res.send("Process is working");
 });
 
-app.get("/get", (req, res) => {
+app.post("/post", (req, res) => {
+  const { url } = req.body;
+  const checkURL = getUrls(url);
+
+  if (checkURL.size === 0) {
+    res.send({ status: 400 });
+    return;
+  }
+
   request(url, function (error, response, body) {
     res.json({
+      status: 200,
       title: getTitle(response.body),
       desc: getDesc(response.body),
       img: getImg(response.body),
