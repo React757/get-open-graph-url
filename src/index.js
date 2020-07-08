@@ -11,7 +11,7 @@ const getDesc = require("./data/desc");
 app.use(cors());
 app.use(bodyParser.json());
 
-const port = 3001;
+const port = 3000;
 
 app.get("/", (req, res) => {
   res.send("Process is working");
