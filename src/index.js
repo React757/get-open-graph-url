@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
   res.send("Process is working");
 });
 
-app.post("/get", (req, res) => {
+app.post("/", (req, res) => {
   const { url } = req.body;
   const checkURL = getUrls(url);
 
