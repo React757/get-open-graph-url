@@ -13,7 +13,7 @@ var getDesc = require("./data/desc");
 app.use(cors());
 app.use(bodyParser.json());
 
-var port = 3001;
+var port = process.env.PORT || 3000;
 
 app.get("/", function (req, res) {
   res.send("Process is working");
