@@ -20,6 +20,7 @@
   },
   "scripts": {
     "start": "node ./dist/src/index.js",
-    "build": "babel src/*.js -d dist && babel src/**/*.js -d dist && babel src/**/**/*.js -d dist"
+    "build": "babel src/*.js -d dist && babel src/**/*.js -d dist && babel src/**/**/*.js -d dist",
+    "deploy": "npm run-script build && npm start"
   }
 }

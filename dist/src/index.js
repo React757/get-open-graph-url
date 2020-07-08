@@ -19,7 +19,7 @@ app.get("/", function (req, res) {
   res.send("Process is working");
 });
 
-app.post("/post", function (req, res) {
+app.post("/get", function (req, res) {
   var url = req.body.url;
 
   var checkURL = getUrls(url);
