@@ -16,7 +16,7 @@ const port = process.env.PORT || 3000;
 app.get("/", (req, res) => {
   
   if(Object.keys(req.query).length === 0){
-    res.send("fil like this ?url=URL ")
+    res.send("fill like this ?url=URL ")
     return;
   }
   const { url } = req.query;
