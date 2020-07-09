@@ -14,13 +14,13 @@ app.use(bodyParser.json());
 const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.send("Process is working");
-});
-
-app.post("/", (req, res) => {
-  const { url } = req.body;
+  
+  if(Object.keys(req.query).length === 0){
+    res.send("fil like this ?url=URL ")
+    return;
+  }
+  const { url } = req.query;
   const checkURL = getUrls(url);
-
   if (checkURL.size === 0) {
     res.send({ status: 400 });
     return;
